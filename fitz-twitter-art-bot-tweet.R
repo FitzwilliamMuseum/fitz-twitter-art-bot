@@ -36,6 +36,6 @@ fitzArtBot_token <- rtweet::create_token(
   access_secret =   Sys.getenv("TWITTER_ACCESS_TOKEN_SECRET")
 )
 rtweet::post_tweet(
-  status = tweet,
+  status = tweetText,
   token = fitzArtBot_token
 )
