@@ -1,30 +1,41 @@
 library(httr)
 library(rtweet)
 library(jsonlite)
+random <- fromJSON("https://data.fitzmuseum.cam.ac.uk/random")
+contentUrl <- 'https://data.fitzmuseum.cam.ac.uk/imagestore/'
+uri <- gsub("http","https",random$admin$uri)
+accession <- as.list(random$identifier$accession_number)
+number <- accession[1]
+images <- random$multimedia$processed
+imageLarge <- images$large$location
+imageUrl <- paste0(contentUrl,imageLarge)
 
+makers <-as.data.frame(random$lifecycle$creation$maker)
+maker <- paste(c(makers$summary_title),collapse=' & ' )
 
+title <- random$summary_title
+
+fullTitles <- paste(c(random$title$value),collapse=', ' )
+
+acquistion <- as.data.frame(random$lifecycle$acquisition$date)
+
+if(title != fullTitles){
+  label <- paste(fullTitles,'-',title,sep = ' ')
+} else {
+  label <- fullTitles
+}
+tweetText <- paste(number, label, 'made by', maker, uri, 'Acquired', acquistion[, c('value')], sep=' ')
+temp_file <- tempfile()
+download.file(imageUrl, temp_file)
 # Create Twitter token
-vambot_token <- rtweet::create_token(
-  app = "vambot",
+fitzArtBot_token <- rtweet::create_token(
+  app = "fitzArtBot",
   consumer_key =    Sys.getenv("TWITTER_CONSUMER_API_KEY"),
   consumer_secret = Sys.getenv("TWITTER_CONSUMER_API_SECRET"),
   access_token =    Sys.getenv("TWITTER_ACCESS_TOKEN"),
   access_secret =   Sys.getenv("TWITTER_ACCESS_TOKEN_SECRET")
 )
-
-random <- fromJSON("https://api.vam.ac.uk/v2/objects/search?random=1&page_size=1&images_exist=true")
-records <- random$records
-names(records)<-gsub("\\_","",names(records))
-number <- records$systemNumber
-title <- records$primaryTitle
-imageID <- records$primaryImageId
-imageUrl <- paste0('https://framemark.vam.ac.uk/collections/',imageID,'/full/full/0/default.jpg')
-url <- paste0('https://collections.vam.ac.uk/item/',number)
-tweet <- paste0(title,' ', url)
-temp_file <- tempfile()
-download.file(imageUrl, temp_file)
-
 rtweet::post_tweet(
   status = tweet,
-  token = vambot_token
+  token = fitzArtBot_token
 )
