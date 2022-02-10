@@ -28,4 +28,4 @@ jobs:
       - name: Install jsonlite package
         run: Rscript -e 'install.packages("jsonlite", dependencies = TRUE)'
       - name: Create and post tweet
-        run: Rscript vambot-tweet.R
+        run: Rscript fitz-twitter-art-bot-tweet.R
