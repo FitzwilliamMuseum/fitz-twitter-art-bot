@@ -1,16 +1,15 @@
 name: fitzArtBot
-
 on:
   schedule:
-    - cron: ''0 */6 * * *' 
+    - cron: '0 */6 * * *'
   workflow_dispatch:
     inputs:
       logLevel:
-        description: 'Log level'     
+        description: 'Log level'
         required: true
         default: 'warning'
       tags:
-        description: 'Run fitzArtBot manually'  
+        description: 'Run fitzArtBot manually'
 jobs:
   fitzartbot-post:
     runs-on: macos-latest
