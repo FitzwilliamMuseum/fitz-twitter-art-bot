@@ -37,5 +37,6 @@ fitzArtBot_token <- rtweet::create_token(
 )
 rtweet::post_tweet(
   status = tweetText,
+  media = temp_file,
   token = fitzArtBot_token
 )
