@@ -20,7 +20,7 @@ The bot tweets at https://twitter.com/fitzArtBot
 To make this work, a Twitter App needs to be generated with elevated access to the V2 API (read and write) - apply for access from essential after generation.
 Once you have set up the twitter account, you need to set the 4 keys referred to in the R script as secrets in the github repo settings. Then the action will be executed every 6 hours and send a tweet.
 
-The endpoint from which JSON is retrieved can be found at https://data.fitzmuseum.cam.ac.uk and is also used to run https://random.fitzmuseum.cam.ac.uk 
+The endpoint from which JSON is retrieved can be found at https://data.fitzmuseum.cam.ac.uk/random and is also used to run https://random.fitzmuseum.cam.ac.uk 
 
 ## License
 
