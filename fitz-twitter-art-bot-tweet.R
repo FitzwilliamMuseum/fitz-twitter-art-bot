@@ -7,7 +7,7 @@ uri <- gsub("http","https",random$admin$uri)
 accession <- as.list(random$identifier$accession_number)
 number <- accession[1]
 images <- random$multimedia$processed
-imageLarge <- images$large$location
+imageLarge <- images$large$location[1:1]
 imageUrl <- paste0(contentUrl,imageLarge)
 
 makers <-as.data.frame(random$lifecycle$creation$maker)
