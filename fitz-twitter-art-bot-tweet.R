@@ -11,7 +11,8 @@ imageLarge <- images$large$location[1:1]
 imageUrl <- paste0(contentUrl,imageLarge)
 
 makers <-as.data.frame(random$lifecycle$creation$maker)
-maker <- paste(c(makers$summary_title),collapse=' & ' )
+maker <- paste(c(paste(rev(strsplit(gsub(',','',makers$summary_title), "\\s+")[[1]]), collapse= " ")),collapse=' & ' )
+
 
 title <- random$summary_title
 
