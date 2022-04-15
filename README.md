@@ -1,5 +1,7 @@
 # Fitzwilliam Museum Twitter Bot - random Art work
 
+[![DOI](https://zenodo.org/badge/457719564.svg)](https://zenodo.org/badge/latestdoi/457719564) [![ORCiD](https://img.shields.io/badge/ORCiD-0000--0002--0246--2335-green.svg)](http://orcid.org/0000-0002-0246-2335)
+
 This twitter bot runs from a simple R script. This script
 polls a random json endpoint from the collection database and
 then assembles a tweet with:
