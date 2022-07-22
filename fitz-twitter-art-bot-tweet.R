@@ -26,12 +26,9 @@ if(title != fullTitles){
   label <- fullTitles
 }
 tweetText <- paste(number, label, 'made by', maker, uri, 'Acquired', acquistion[, c('value')], sep=' ')
-temp_file <- tempfile()
+temp_file <- tempfile(fileext = ".jpeg")
 download.file(imageUrl, temp_file)
-print(tweetText)
-print(label)
-print(temp_file)
-print(imageUrl)
+
 # Create Twitter token
 
 fitzArtBot_token <- rtweet::rtweet_bot(
