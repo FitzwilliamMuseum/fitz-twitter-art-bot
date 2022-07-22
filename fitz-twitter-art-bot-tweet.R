@@ -30,6 +30,8 @@ temp_file <- tempfile()
 download.file(imageUrl, temp_file)
 print(tweetText)
 print(label)
+print(temp_file)
+print(imageUrl)
 # Create Twitter token
 
 fitzArtBot_token <- rtweet::rtweet_bot(
@@ -42,6 +44,6 @@ rtweet::auth_as(fitzArtBot_token)
 
 rtweet::post_tweet(
   status = tweetText,
-  media = temp_file,
+  media = imageUrl,
   media_alt_text = label
 )
