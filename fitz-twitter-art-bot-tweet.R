@@ -40,10 +40,11 @@ fitzArtBot_token <- rtweet::rtweet_bot(
   access_token =    Sys.getenv("TWITTER_ACCESS_TOKEN"),
   access_secret =   Sys.getenv("TWITTER_ACCESS_TOKEN_SECRET")
 )
-rtweet::auth_as(fitzArtBot_token)
+#rtweet::auth_as(fitzArtBot_token)
 
 rtweet::post_tweet(
+  token = fitzArtBot_token
   status = tweetText,
-  media = imageUrl,
+  media = temp_file,
   media_alt_text = label
 )
