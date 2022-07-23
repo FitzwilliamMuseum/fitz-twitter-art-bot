@@ -18,14 +18,14 @@ title <- random$summary_title
 
 fullTitles <- paste(c(random$title$value),collapse=', ' )
 
-acquistion <- as.data.frame(random$lifecycle$acquisition$date)
+acquisition <- as.data.frame(random$lifecycle$acquisition$date)
 
 if(title != fullTitles){
   label <- paste(fullTitles,'-',title,sep = ' ')
 } else {
   label <- fullTitles
 }
-tweetText <- paste(number, label, 'made by', maker, uri, 'Acquired', acquistion[, c('value')], sep=' ')
+tweetText <- paste(number, label, 'made by', maker, uri, 'Acquired', acquisition[, c('value')], sep=' ')
 temp_file <- tempfile(fileext = ".jpeg")
 download.file(imageUrl, temp_file)
 
