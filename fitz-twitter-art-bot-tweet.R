@@ -29,15 +29,12 @@ tweetText <- paste(number, label, 'made by', maker, uri, 'Acquired', acquisition
 temp_file <- tempfile(fileext = ".jpeg")
 download.file(imageUrl, temp_file)
 
-# Create Twitter token
-
 fitzArtBot_token <- rtweet::rtweet_bot(
   api_key =    Sys.getenv("TWITTER_CONSUMER_API_KEY"),
   api_secret = Sys.getenv("TWITTER_CONSUMER_API_SECRET"),
   access_token =    Sys.getenv("TWITTER_ACCESS_TOKEN"),
   access_secret =   Sys.getenv("TWITTER_ACCESS_TOKEN_SECRET")
 )
-#rtweet::auth_as(fitzArtBot_token)
 
 rtweet::post_tweet(
   token          = fitzArtBot_token,
