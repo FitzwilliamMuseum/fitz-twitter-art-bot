@@ -3,7 +3,7 @@ library(rtweet)
 library(jsonlite)
 random <- fromJSON("https://data.fitzmuseum.cam.ac.uk/random")
 contentUrl <- 'https://data.fitzmuseum.cam.ac.uk/imagestore/'
-uri <- gsub("http","https",random$admin$uri)
+uri <- gsub("http:","https:",random$admin$uri)
 accession <- as.list(random$identifier$accession_number)
 number <- accession[1]
 images <- random$multimedia$processed
